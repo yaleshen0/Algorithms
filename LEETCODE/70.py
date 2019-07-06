@@ -11,3 +11,8 @@ def climbingStairs(n):
         res[i] = res[i-1] + res[i-2]
     return res[n]
 print(climbingStairs(n))
+
+'''
+where to stuck:
+如何简历foreach(methods) 和 subelements 的关系
+'''
