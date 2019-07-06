@@ -1,0 +1,104 @@
+'''
+Example
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+Explanation: 342 + 465 = 807.
+'''
+
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+
+# class Solution:
+#     def addTwoNumbers(self, l1, l2):
+#         """
+#         :type l1: ListNode
+#         :type l2: ListNode
+#         :rtype: ListNode
+#         """
+#         carry = 0
+#         newList = ListNode(0)
+#         tmp = newList
+#         totalSum = 0
+
+#         while l1 or l2 or carry:
+#             if l1:
+#                 totalSum += l1.val
+#                 l1 = l1.next
+#             if l2:
+#                 totalSum += l2.val
+#                 l2 = l2.next
+
+#             totalSum += carry
+#             carry = totalSum // 10
+#             tmp.next = ListNode(totalSum % 10)
+#             totalSum = 0
+#             tmp = tmp.next
+#         return newList.next
+
+# l1 = ListNode(2)
+# b = ListNode(4)
+# c = ListNode(3)
+# l1.next = b
+# b.next = c
+
+# l2 = ListNode(5)
+# e = ListNode(6)
+# f = ListNode(4)
+# l2.next = e
+# e.next = f
+
+# node = Solution().addTwoNumbers(l1, l2)
+
+# while node:
+#     print(node.val)
+#     node = node.next
+
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+class Solution:
+    def addTwoNumbers(self, l1, l2):
+        '''
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode 
+        '''
+        carry = 0
+        newList = ListNode(0)
+        tmp = newList
+        totalSum = 0
+
+        while l1 or l2 or carry:
+            if l1:
+                totalSum += l1.val
+                l1 = l1.next
+            if l2:
+                totalSum += l2.val
+                l2 = l2.next
+            totalSum = totalSum + carry
+            carry = totalSum // 10
+            tmp.next = ListNode(totalSum % 10)
+            totalSum = 0
+            tmp = tmp.next
+        return newList.next
+l1 = ListNode(1)
+b = ListNode(8)
+c = ListNode(9)
+l1.next = b
+b.next = c
+
+l2 = ListNode(8)
+e = ListNode(9)
+f = ListNode(2)
+l2.next = e
+e.next = f
+
+node = Solution().addTwoNumbers(l1, l2)
+while node:
+    print(node.val)
+    node = node.next
